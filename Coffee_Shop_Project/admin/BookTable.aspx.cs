@@ -88,12 +88,19 @@ namespace Coffee_Shop_Project.admin
             }
         }
 
+        //void delete_booking(int id)
+        //{
+        //    getcon();
+        //    string query = "DELETE FROM booking_tbl WHERE Id = @ID";
+        //    cmd = new SqlCommand(query, con);
+        //    cmd.Parameters.AddWithValue("@ID", id);
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+        //}
         void delete_booking(int id)
         {
             getcon();
-            string query = "DELETE FROM booking_tbl WHERE Id = @ID";
-            cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@ID", id);
+            cmd = new SqlCommand("DELETE FROM booking_tbl WHERE Id = '" + id + "'", con);
             cmd.ExecuteNonQuery();
             con.Close();
         }

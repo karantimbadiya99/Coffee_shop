@@ -129,7 +129,7 @@
     <Content Include="admin\scss\bootstrap\scss\bootstrap-reboot.css" />
     <Content Include="admin\scss\bootstrap\scss\bootstrap.css" />
     <Content Include="admin\Dashboard.aspx" />
-    <Content Include="admin\User_Details.aspx" />
+    <Content Include="admin\Users.aspx" />
     <Content Include="App_Data\registration.mdf" />
     <Content Include="App_Data\registration_log.ldf">
       <DependentUpon>registration.mdf</DependentUpon>
@@ -263,15 +263,14 @@
     <Compile Include="admin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\User_Details.aspx.cs">
-      <DependentUpon>User_Details.aspx</DependentUpon>
+    <Compile Include="admin\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\User_Details.aspx.designer.cs">
-      <DependentUpon>User_Details.aspx</DependentUpon>
+    <Compile Include="admin\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
-    <Compile Include="Class2.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -142,10 +142,8 @@ namespace Coffee_Shop_Project
             //}
 
             getcon();
-            // Use parameterized query to prevent SQL injection
-            cmd = new SqlCommand("SELECT ID, Role FROM SignUp_tbl WHERE Email=@Email AND Password=@Password", cs.startcon());
-            cmd.Parameters.AddWithValue("@Email", txteml.Text);
-            cmd.Parameters.AddWithValue("@Password", txtpass.Text);
+            cmd = new SqlCommand("SELECT ID, Role FROM SignUp_tbl WHERE Email='"+ txteml.Text + "' AND Password='"+ txtpass.Text + "'", cs.startcon());
+            
 
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -192,13 +190,15 @@ namespace Coffee_Shop_Project
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Invalid Email or Password!');", true);
             }
+
+            
         }
 
         void id()
         {
             getcon();
-            da = new SqlDataAdapter("select * from reg_tbl Where Email='"+txteml.Text+"' AND Password='"+txtpass.Text+"'", cs.startcon());
-            
+            da = new SqlDataAdapter("select * from reg_tbl Where Email='" + txteml.Text + "' AND Password='" + txtpass.Text + "'", cs.startcon());
+
 
             ds = new DataSet();
             da.Fill(ds);

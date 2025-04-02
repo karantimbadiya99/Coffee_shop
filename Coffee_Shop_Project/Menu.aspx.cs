@@ -97,8 +97,7 @@ namespace Coffee_Shop_Project
                     return;
                 }
 
-                da = new SqlDataAdapter("SELECT * FROM Products WHERE CategoryId = @CategoryId", con);
-                da.SelectCommand.Parameters.AddWithValue("@CategoryId", categoryId);
+                da = new SqlDataAdapter("SELECT * FROM Products WHERE CategoryId = '"+ categoryId + "'", con);
                 ds = new DataSet();
                 da.Fill(ds);
                 row = ds.Tables[0].Rows.Count;
@@ -138,14 +137,14 @@ namespace Coffee_Shop_Project
             display();
         }
 
-        // Next Page Button Click
+      
         protected void btnNext_Click(object sender, EventArgs e)
         {
             ViewState["pid"] = Convert.ToInt32(ViewState["pid"]) + 1;
             display();
         }
 
-        // Previous Page Button Click
+       
         protected void btnPrev_Click(object sender, EventArgs e)
         {
             ViewState["pid"] = Convert.ToInt32(ViewState["pid"]) - 1;
@@ -170,10 +169,9 @@ namespace Coffee_Shop_Project
             p = Convert.ToInt32(ViewState["pid"]) - 1;
             ViewState["pid"] = p;
 
-            // Ensure `pg` is initialized
             display();
 
-            if (pg != null)  // ✅ Check if `pg` is initialized
+            if (pg != null)  // Check if `pg` is initialized
             {
                 int temp = row / pg.PageSize;
                 if (p == temp)
@@ -213,8 +211,7 @@ namespace Coffee_Shop_Project
                 ViewState["Pro_Id"] = Pro_id;
 
                 getInfo();
-
-                cmd = new SqlCommand("insert into cart_tbl(p_Id,u_Id,p_name,p_dec,p_price,image) VALUES ('"+Pro_id+"','"+User_Id+"','"+name+"','"+dec+"','"+price+"','"+img+"') ", cs.startcon());
+                cmd = new SqlCommand("insert into cart_tbl(p_Id,u_Id,p_name,p_dec,p_price,image) VALUES ('" + Pro_id + "','" + User_Id + "','" + name + "','" + dec + "','" + price + "','" + img + "') ", cs.startcon());
                 cmd.ExecuteNonQuery();
             }
         }

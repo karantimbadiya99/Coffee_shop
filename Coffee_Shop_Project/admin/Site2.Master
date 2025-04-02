@@ -56,7 +56,7 @@
                             <a href="BookTable.aspx" class="nav-item nav-link">Book Table</a>
                             <a href="ContactDetails.aspx" class="nav-item nav-link">Contact Details</a>
 
-                            <a href="User_Details.aspx" class="nav-item nav-link">User Detail</a>
+                            <a href="Users.aspx" class="nav-item nav-link">User Detail</a>
                             <%--<a href="RegAdmin.aspx" class="nav-item nav-link">Register</a>
                             <a href="LoginAdmin.aspx" class="nav-item nav-link">Login</a>--%>
                         </div>

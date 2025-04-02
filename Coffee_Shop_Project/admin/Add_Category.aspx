@@ -16,8 +16,7 @@
         
         <h2 style="color: #5D4037; margin-bottom: 20px; font-size: 26px; font-weight: bold; text-transform: uppercase;">Add Category</h2>
 
-        <asp:Label ID="lblMessage" runat="server" ForeColor="Red" 
-            Style="font-weight: bold; display: block; margin-bottom: 15px; font-size: 14px;"></asp:Label>
+        
 
         <div style="text-align: left; margin-bottom: 10px;">
             <asp:Label ID="lblCategoryName" runat="server" Text="Category Name:" 
@@ -33,9 +32,35 @@
             OnMouseOver="this.style.backgroundColor='#4E342E'; this.style.transform='scale(1.05)'" 
             OnMouseOut="this.style.backgroundColor='#6D4C41'; this.style.transform='scale(1)'" 
             OnClick="btnAddCategory_Click1" />
-    </div>
-<%--</form>--%>
-</center>
+        <br />
+        <br />
+        
+<%--        <div class="container gridview-container">--%>
+            <h2 class="text-center mb-4">Manage Categories</h2>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" CssClass="gridview-table">
+                <Columns>
+                    <asp:TemplateField HeaderText="Id">
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Name">
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>                   
+                    <asp:TemplateField HeaderText="Remove">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_delete" OnClientClick="return confirm('Are you sure you want to delete this Category?');" CssClass="remove-button">
+                                Remove
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+<%--      </div>--%>
+    </center>
+    
 
 
 </asp:Content>

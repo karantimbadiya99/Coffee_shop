@@ -45,20 +45,32 @@ namespace Coffee_Shop_Project
                 Session["Request"] = txtrequest.Text;
 
                 // Store return URL
-                Session["ReturnUrl"] = "booking.aspx";
+                Session["ReturnUrl"] = "Reservation.aspx";
 
                 // Redirect user to login page
-                Response.Redirect("login2_master.aspx");
+                Response.Redirect("Reservation.aspx");
+
                 return;
             }
 
             // User is logged in, proceed with booking
             cs.insert_booking(txtname.Text, txtemail.Text, txtdate.Text, txtpeople.Text, txtrequest.Text);
 
+
             // Show success message
             ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Booking Successful!');", true);
         }
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            txtdate.Text = (Calendar1.SelectedDate.ToShortDateString() + " " + txttime.Text + " " + DropDownList1.SelectedItem).ToString();
+            Calendar1.Visible = false;
 
+        }
+
+        protected void btnselectdate_Click(object sender, EventArgs e)
+        {
+            Calendar1.Visible = true;
+        }
 
         //protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         //{

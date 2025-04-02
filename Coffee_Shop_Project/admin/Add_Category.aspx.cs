@@ -21,13 +21,42 @@ namespace Coffee_Shop_Project.admin
         Class1 cs;
         protected void Page_Load(object sender, EventArgs e)
         {
-            getcon();
-
+            cs = new Class1();
+            con = cs.startcon();
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            fillgrid();
         }
         void getcon()
         {
             cs = new Class1();
             cs.startcon();
+        }
+        void fillgrid()
+        {
+            getcon();
+            cmd = new SqlCommand("SELECT Id, Name FROM Categories", con);
+            da = new SqlDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds);
+
+            GridView1.DataSource = ds;
+            GridView1.DataBind();
+
+            con.Close();
+        }
+
+        //protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+            
+        //}
+        void delete_categories(int id)
+        {
+            getcon();
+            cmd = new SqlCommand("DELETE FROM Categories WHERE Id ='" + id + "' ", cs.startcon());
+            cmd.ExecuteNonQuery();
         }
 
         protected void btnAddCategory_Click1(object sender, EventArgs e)
@@ -36,6 +65,16 @@ namespace Coffee_Shop_Project.admin
             {
                 getcon();
                 cs.addCategory(txtCategoryName.Text);
+            }
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "cmd_delete")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+                delete_categories(id);
+                fillgrid();
             }
         }
     }
