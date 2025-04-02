@@ -58,23 +58,29 @@ namespace Coffee_Shop_Project
         }
 
 
+        //public void updateProduct(int id, string name, string des, decimal price, int catid, string img)
+        //{
+        //    startcon();
+        //    string query = "UPDATE Products SET Name = @Name, Description = @Description, Price = @Price, CategoryId = @CategoryId, Image = @Image WHERE Id = @Id";
+
+        //    cmd = new SqlCommand(query, con);
+        //    cmd.Parameters.AddWithValue("@Id", id);
+        //    cmd.Parameters.AddWithValue("@Name", name);
+        //    cmd.Parameters.AddWithValue("@Description", des);
+        //    cmd.Parameters.AddWithValue("@Price", price);
+        //    cmd.Parameters.AddWithValue("@CategoryId", catid);
+        //    cmd.Parameters.AddWithValue("@Image", img);
+
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+        //}
         public void updateProduct(int id, string name, string des, decimal price, int catid, string img)
         {
             startcon();
-            string query = "UPDATE Products SET Name = @Name, Description = @Description, Price = @Price, CategoryId = @CategoryId, Image = @Image WHERE Id = @Id";
-
-            cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@Id", id);
-            cmd.Parameters.AddWithValue("@Name", name);
-            cmd.Parameters.AddWithValue("@Description", des);
-            cmd.Parameters.AddWithValue("@Price", price);
-            cmd.Parameters.AddWithValue("@CategoryId", catid);
-            cmd.Parameters.AddWithValue("@Image", img);
-
+            cmd = new SqlCommand("updateProducts set Name='" + name + "',Description='" + des + "',Price='" + price + "',Image='" + img + "'  where Id='" + id + "'", con);
             cmd.ExecuteNonQuery();
             con.Close();
         }
-
         public void delete_product(int id)
         {
             startcon();
