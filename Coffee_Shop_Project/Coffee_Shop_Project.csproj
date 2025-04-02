@@ -130,10 +130,6 @@
     <Content Include="admin\scss\bootstrap\scss\bootstrap.css" />
     <Content Include="admin\Dashboard.aspx" />
     <Content Include="admin\User_Details.aspx" />
-    <Content Include="App_Data\Product_db.mdf" />
-    <Content Include="App_Data\Product_db_log.ldf">
-      <DependentUpon>Product_db.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\registration.mdf" />
     <Content Include="App_Data\registration_log.ldf">
       <DependentUpon>registration.mdf</DependentUpon>

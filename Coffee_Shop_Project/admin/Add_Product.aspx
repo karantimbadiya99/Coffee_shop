@@ -57,7 +57,7 @@
                 OnClick="btnAddProduct_Click" />
 
             <!-- Product List -->
-           <%-- <div class="grid-container mt-4">
+            <div class="grid-container mt-4">
                 <h3>Product List</h3>
 
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-striped" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
@@ -102,7 +102,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
---%>
+
 
 
 

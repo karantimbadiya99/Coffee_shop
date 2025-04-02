@@ -107,7 +107,7 @@ namespace Coffee_Shop_Project
         }
         public DataSet filldata()
         {
-            da = new SqlDataAdapter("select * from reg_tbl", con);
+            da = new SqlDataAdapter("select * from Products", con);
             ds = new DataSet();
             da.Fill(ds);
             return ds;

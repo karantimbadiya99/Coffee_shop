@@ -32,8 +32,8 @@ namespace Coffee_Shop_Project.admin
         {
             cs = new Class1();
             getcon();
-            //GridView1.DataSource = cs.filldata();
-            //GridView1.DataBind();
+            GridView1.DataSource = cs.filldata();
+            GridView1.DataBind();
         }
 
 
