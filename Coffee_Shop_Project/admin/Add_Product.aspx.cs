@@ -101,11 +101,8 @@ namespace Coffee_Shop_Project.admin
         bool IsDuplicate(string productName, int categoryId)
         {
             getcon();
-            string query = "SELECT COUNT(*) FROM Products WHERE Name = @Name AND CategoryID = @CategoryID";
-            cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@Name", productName);
-            cmd.Parameters.AddWithValue("@CategoryID", categoryId);
-
+           
+            cmd = new SqlCommand("SELECT COUNT(*) FROM Products WHERE Name = '" + productName + "' AND CategoryID = '" + categoryId + "'", con);
             int count = Convert.ToInt32(cmd.ExecuteScalar());
             con.Close();
             return count > 0;
@@ -147,22 +144,36 @@ namespace Coffee_Shop_Project.admin
         {
             if (e.CommandName == "cmd_edt")
             {
+                filltext();
                 int id;
                 if (int.TryParse(e.CommandArgument.ToString(), out id))
                 {
                     ViewState["id"] = id;
                     btnAddProduct.Text = "Update";
-                    filltext();
+
+                    decimal price;
+                    if (!decimal.TryParse(txtPrice.Text, out price))
+                    {
+                        // Handle error, like showing a message
+                        return;
+                    }
+                    cs.updateProduct(id, txtProductName.Text, txtDescription.Text, price, ddlCategory.SelectedIndex);
                 }
             }
             else
             {
                 cs = new Class1();
-                int id = Convert.ToInt32(e.CommandArgument);
-                ViewState["id"] = id;
-
-                cs.delete_product(Convert.ToInt32(ViewState["id"]));
-                fillgrid();
+                int id;
+                if (int.TryParse(e.CommandArgument.ToString(), out id))
+                {
+                    ViewState["id"] = id;
+                    cs.delete_product(id);
+                    fillgrid();
+                }
+                else
+                {
+                    // Handle error
+                }
             }
         }
         protected void btnAddProduct_Click(object sender, EventArgs e)
@@ -201,7 +212,7 @@ namespace Coffee_Shop_Project.admin
                         }
                     }
 
-                    cs.updateProduct(productId, productName, description, price, categoryId, fnm);
+                    //cs.updateProduct(productId, productName, description, price, categoryId, fnm);
                     btnAddProduct.Text = "Add Product";
                     ViewState["id"] = null;
                 }

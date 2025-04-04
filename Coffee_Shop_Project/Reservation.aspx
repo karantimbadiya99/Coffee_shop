@@ -60,6 +60,18 @@
                             <div class="form-group">
                                 <asp:TextBox ID="txtemail" class="form-control bg-transparent border-primary p-4" placeholder="Your Email" runat="server"></asp:TextBox>
                             </div>
+                            
+                            <div class="form-group">
+                                <asp:TextBox ID="txttime" class="form-control bg-transparent border-primary p-4" placeholder="Time" runat="server" TextMode="Time"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:DropDownList ID="DropDownList1" class="custom-select bg-transparent border-primary px-4" Style="height: 49px;" runat="server">
+                                    <asp:ListItem>--Select AM or PM--</asp:ListItem>
+                                    <asp:ListItem>AM</asp:ListItem>
+                                    <asp:ListItem>PM</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+
                             <div class="form-group">
                                 <asp:TextBox ID="txtdate" class="form-control bg-transparent border-primary p-4" placeholder="Date" runat="server"></asp:TextBox>
                                 <asp:Button ID="btnselectdate" CssClass="btn btn-primary py-2" runat="server" Text="Select Date" OnClick="btnselectdate_Click" />
@@ -76,17 +88,6 @@
                                 <TitleStyle BackColor="#990000" Font-Bold="True" Font-Size="9pt" ForeColor="#FFFFCC" />
                                 <TodayDayStyle BackColor="#FFCC66" ForeColor="White" />
                             </asp:Calendar>
-
-                            <div class="form-group">
-                                <asp:TextBox ID="txttime" class="form-control bg-transparent border-primary p-4" placeholder="Time" runat="server" TextMode="Time"></asp:TextBox>
-                            </div>
-                            <div class="form-group">
-                                <asp:DropDownList ID="DropDownList1" class="custom-select bg-transparent border-primary px-4" Style="height: 49px;" runat="server">
-                                    <asp:ListItem>--Select AM or PM--</asp:ListItem>
-                                    <asp:ListItem>AM</asp:ListItem>
-                                    <asp:ListItem>PM</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
                             <div class="form-group">
                                 <asp:TextBox ID="txtpeople" class="form-control bg-transparent border-primary p-4" placeholder="No. Of People" runat="server" TextMode="Number"></asp:TextBox>
                             </div>

@@ -7,12 +7,13 @@
     <h1>&nbsp;</h1>
     <h1>&nbsp;</h1>
     <h1>&nbsp;</h1>
-    
+
     <center>
-        
-        <div class="container gridview-container">
-            <h2 class="text-center mb-4">Manage Bookings</h2>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" CssClass="gridview-table">
+
+        <div class="container mt-4">
+            <h3 class="text-center mb-4">Manage Bookings</h3>
+
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped">
                 <Columns>
                     <asp:TemplateField HeaderText="Booking ID">
                         <ItemTemplate>
@@ -46,13 +47,17 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Remove">
                         <ItemTemplate>
-                            <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_delete" OnClientClick="return confirm('Are you sure you want to delete this booking?');" CssClass="remove-button">
-                                Remove
+                            <asp:LinkButton ID="LinkButton2" runat="server"
+                                CommandArgument='<%# Eval("Id") %>'
+                                CommandName="cmd_delete"
+                                OnClientClick="return confirm('Are you sure you want to delete this booking?');">
+                        Delete
                             </asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </div>
+
     </center>
 </asp:Content>

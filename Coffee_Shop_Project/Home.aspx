@@ -6,7 +6,7 @@
     <div class="container-fluid p-0 mb-5">
         <div id="blog-carousel" class="carousel slide overlay-bottom" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active >
+                <div class="carousel-item active" >
                     <img class="w-100" src="img/carousel-1.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <h2 class="text-primary font-weight-medium m-0">We Have Been Serving</h2>
@@ -231,81 +231,93 @@
 
 
     <!-- Reservation Start -->
-    <div class="container-fluid my-5">
-        <div class="container">
-            <div class="reservation position-relative overlay-top overlay-bottom">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 my-5 my-lg-0">
-                        <div class="p-5">
-                            <div class="mb-4">
-                                <h1 class="display-3 text-primary">30% OFF</h1>
-                                <h1 class="text-white">For Online Reservation</h1>
-                            </div>
-                            <p class="text-white">Skip the wait and reserve your spot online in seconds! Whether it’s a cozy date or a coffee break, your perfect table is just a click away.   </p>
-                            <ul class="list-inline text-white m-0">
-                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Quick & easy online booking  </li>
-                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>No waiting, just walk in & enjoy  </li>
-                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Choose your preferred spot</li>
-                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Perfect for meetings, dates & gatherings</li>
-
-                            </ul>
+    <div class="container-fluid py-5">
+    <div class="container">
+        <div class="reservation position-relative overlay-top overlay-bottom">
+            <div class="row align-items-center">
+                <!-- Discount Offer Section -->
+                <div class="col-lg-6 my-5 my-lg-0">
+                    <div class="p-5">
+                        <div class="mb-4">
+                            <h1 class="display-3 text-primary">30% OFF</h1>
+                            <h1 class="text-white">For Online Reservation</h1>
                         </div>
+                        <p class="text-white">
+                            Skip the wait and reserve your spot online in seconds! Whether it’s a cozy date or a coffee break, your perfect table is just a click away.
+                        </p>
+                        <ul class="list-inline text-white m-0">
+                            <li class="py-2">
+                                <i class="fa fa-check text-primary mr-3"></i>Quick & easy online booking
+                            </li>
+                            <li class="py-2">
+                                <i class="fa fa-check text-primary mr-3"></i>No waiting, just walk in & enjoy
+                            </li>
+                            <li class="py-2">
+                                <i class="fa fa-check text-primary mr-3"></i>Choose your preferred spot
+                            </li>
+                            <li class="py-2">
+                                <i class="fa fa-check text-primary mr-3"></i>Perfect for meetings, dates & gatherings
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
-                            <h1 class="text-white mb-4 mt-5">Book Your Table</h1>
-                            <form class="mb-5">
-                                <div class="form-group">
-                                    <%--<input type="text" class="form-control bg-transparent border-primary p-4" placeholder="Name"
-                                        required="required" />--%>
-                                    <asp:TextBox ID="nm" class="form-control bg-transparent border-primary p-4" placeholder="Name" runat="server"></asp:TextBox>
+                </div>
 
-                                </div>
-                                <div class="form-group">
-                                    <%--<input type="email" class="form-control bg-transparent border-primary p-4" placeholder="Email"
-                                        required="required" />--%>
-                                    <asp:TextBox ID="eml" class="form-control bg-transparent border-primary p-4" placeholder="Email" runat="server"></asp:TextBox>
-                                </div>
-                                <div class="form-group">
-                                    <div class="date" id="date" data-target-input="nearest">
-<%--                                        <input type="text" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Date" data-target="#date" data-toggle="datetimepicker"/>--%>
-                                    <asp:TextBox ID="Date" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Date" runat="server"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="time" id="time" data-target-input="nearest">
-<%--                                        <input type="text" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Time" data-target="#time" data-toggle="datetimepicker"/>--%>
-                                    <asp:TextBox ID="Time" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Time" runat="server"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <%--<select class="custom-select bg-transparent border-primary px-4" style="height: 49px;">
-                                        <option selected>Person</option>
-                                        <option value="1">Person 1</option>
-                                        <option value="2">Person 2</option>
-                                        <option value="3">Person 3</option>
-                                        <option value="3">Person 4</option>
-                                    </select>--%>
-                                    <asp:DropDownList ID="DropDownList1" class="custom-select bg-transparent border-primary px-4" style="height: 49px;" runat="server" AutoPostBack="True">
-                                        <asp:ListItem>Person</asp:ListItem>
-                                        <asp:ListItem>Person 1</asp:ListItem>
-                                        <asp:ListItem>Person 2</asp:ListItem>
-                                        <asp:ListItem>Person 3</asp:ListItem>
-                                        <asp:ListItem>Person 4</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                                
-                                <div>
-<%--                                    <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Book Now</button>--%>
-                                    <asp:Button ID="btnbook" class="btn btn-primary btn-block font-weight-bold py-3" runat="server" Text="Book Now" />
-                                </div>
-                            </form>
-                        </div>
+                <!-- Reservation Form Section -->
+                <div class="col-lg-6">
+                    <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
+                        <h1 class="text-white mb-4 mt-5">Book Your Table</h1>
+                        <form class="mb-5">
+                            <div class="form-group">
+                                <asp:TextBox ID="txtname" class="form-control bg-transparent border-primary p-4" placeholder="Your Name" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox ID="txtemail" class="form-control bg-transparent border-primary p-4" placeholder="Your Email" runat="server"></asp:TextBox>
+                            </div>
+                            
+                            <div class="form-group">
+                                <asp:TextBox ID="txttime" class="form-control bg-transparent border-primary p-4" placeholder="Time" runat="server" TextMode="Time"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:DropDownList ID="DropDownList1" class="custom-select bg-transparent border-primary px-4" Style="height: 49px;" runat="server">
+                                    <asp:ListItem>--Select AM or PM--</asp:ListItem>
+                                    <asp:ListItem>AM</asp:ListItem>
+                                    <asp:ListItem>PM</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+
+                            <div class="form-group">
+                                <asp:TextBox ID="txtdate" class="form-control bg-transparent border-primary p-4" placeholder="Date" runat="server"></asp:TextBox>
+                                <asp:Button ID="btnselectdate" CssClass="btn btn-primary py-2" runat="server" Text="Select Date"  />
+                            </div>
+                            
+                            <asp:Calendar ID="Calendar1" runat="server" Visible="False" BackColor="#FFFFCC" BorderColor="#FFCC66" BorderWidth="1px"
+                                DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#663399" Height="200px"
+                                 ShowGridLines="True" Width="220px">
+                                <DayHeaderStyle BackColor="#FFCC66" Font-Bold="True" Height="1px" />
+                                <NextPrevStyle Font-Size="9pt" ForeColor="#FFFFCC" />
+                                <OtherMonthDayStyle ForeColor="#CC9966" />
+                                <SelectedDayStyle BackColor="#CCCCFF" Font-Bold="True" />
+                                <SelectorStyle BackColor="#FFCC66" />
+                                <TitleStyle BackColor="#990000" Font-Bold="True" Font-Size="9pt" ForeColor="#FFFFCC" />
+                                <TodayDayStyle BackColor="#FFCC66" ForeColor="White" />
+                            </asp:Calendar>
+                            <div class="form-group">
+                                <asp:TextBox ID="txtpeople" class="form-control bg-transparent border-primary p-4" placeholder="No. Of People" runat="server" TextMode="Number"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox ID="txtrequest" class="form-control bg-transparent border-primary p-4" placeholder="Special Request" runat="server" Style="height: 100px"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:Button ID="btnbooking" class="btn btn-primary w-100 py-3" runat="server" Text="Book Now"  />
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
     <!-- Reservation End -->
 
 
