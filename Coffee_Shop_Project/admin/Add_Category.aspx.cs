@@ -28,6 +28,21 @@ namespace Coffee_Shop_Project.admin
                 con.Open();
             }
             fillgrid();
+
+            //getcon();
+            lblUser.ForeColor = System.Drawing.Color.White;
+            // Debugging: Print session values to the Output Window
+            System.Diagnostics.Debug.WriteLine("Session Check: User Email = " + (Session["User Email"] ?? "NULL"));
+
+            if (Session["User Email"] != null)
+            {
+                lblUser.Text = "Welcome, " + Session["User Email"].ToString();
+            }
+            else
+            {
+                lblUser.Text = "Welcome, Guest!";
+
+            }
         }
         void getcon()
         {

@@ -121,67 +121,50 @@
     <br />
     <br />
     <div class="container mt-4">
-    <h3 class="text-center mb-4">Product List</h3>
+        <h3 class="text-center mb-4">Product List</h3>
 
-    <asp:GridView ID="GridView1" runat="server" 
-        CssClass="table table-bordered table-striped" 
-        AutoGenerateColumns="False" 
-        OnRowCommand="GridView1_RowCommand">
-        <Columns>
-            <asp:TemplateField HeaderText="ID">
-                <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-striped" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+            <Columns>
+                <asp:TemplateField HeaderText="Id">
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Name">
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Description">
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("Description") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Price">
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Image">
+                    <ItemTemplate>
 
-            <asp:TemplateField HeaderText="Name">
-                <ItemTemplate>
-                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
+                        <asp:Image ID="Image1" Height="100px" Width="100px" runat="server"
+                            ImageUrl='<%# Eval("Image") %>' />
 
-            <asp:TemplateField HeaderText="Description">
-                <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Description") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-
-            <asp:TemplateField HeaderText="Price">
-                <ItemTemplate>
-                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-
-            <asp:TemplateField HeaderText="Image">
-                <ItemTemplate>
-                    <asp:Image ID="Image1" runat="server" 
-                        ImageUrl='<%# Eval("Image") %>' 
-                        Height="100px" Width="100px" />
-                </ItemTemplate>
-            </asp:TemplateField>
-
-            <asp:TemplateField HeaderText="Update">
-                <ItemTemplate>
-                    <asp:LinkButton ID="LinkButton1" runat="server" 
-                        CommandArgument='<%# Eval("Id") %>' 
-                        CommandName="cmd_edt">
-                        Update
-                    </asp:LinkButton>
-                </ItemTemplate>
-            </asp:TemplateField>
-
-            <asp:TemplateField HeaderText="Delete">
-                <ItemTemplate>
-                    <asp:LinkButton ID="LinkButton2" runat="server" 
-                        CommandArgument='<%# Eval("Id") %>' 
-                        CommandName="md_dlt" 
-                        OnClientClick="return confirm('Are you sure you want to delete this product?');">
-                        Delete
-                    </asp:LinkButton>
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>
-</div>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Update">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_edt">Update</asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Delete">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="md_dlt">Delete</asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+    </div>
 
 </asp:Content>

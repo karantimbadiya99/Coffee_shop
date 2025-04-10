@@ -49,10 +49,18 @@ namespace Coffee_Shop_Project
             cmd.ExecuteNonQuery();
         }
 
-        public void updateProduct(int id, string name, string des, decimal price, int catid)
+        //public void updateProduct(int id, string name, string des, decimal price, int catid)
+        //{
+        //    startcon();
+        //    cmd = new SqlCommand("update Products set Name='" + name + "',Description='" + des + "',Price='" + price + "' where Id='" + id + "'", con);
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+        //}
+         public void updateProduct(int id, string name, string des, decimal price, int catid, string img)
         {
             startcon();
-            cmd = new SqlCommand("update Products set Name='" + name + "',Description='" + des + "',Price='" + price + "' where Id='" + id + "'", con);
+
+            cmd = new SqlCommand("UPDATE Products SET Name = '" + name + ", Description = '" + des + ", Price = '" + price + ", CategoryId = '" + catid + ", Image = '" + img + " WHERE Id = '" + id + "", con);
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -104,7 +112,15 @@ namespace Coffee_Shop_Project
         }
         public DataSet select(int id)
         {
-            da = new SqlDataAdapter("select * from reg_tbl where Id='" + id + "'", con);
+            da = new SqlDataAdapter("select * from Products where Id='" + id + "'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
+
+        public DataSet selectPro(int id)
+        {
+            da = new SqlDataAdapter("select * from Products where Id='" + id + "'", con);
             ds = new DataSet();
             da.Fill(ds);
             return ds;

@@ -11,7 +11,11 @@
     <br />
     <br />
     <br />
+    <br />
     <center>
+
+        <h1><asp:Label ID="lblUser" runat="server"  Style="color: #5D4037; margin-bottom: 20px; font-size: 28px; font-weight: bold; text-transform: uppercase;"></asp:Label>
+        <h1>&nbsp;<h1>
         <%--   <form id="form1" runat="server" style="display: flex; justify-content: center; align-items: center; height: 100vh; background: url('coffee-bg.jpg') no-repeat center center/cover; font-family: 'Poppins', sans-serif; margin: 0;">--%>
         <div style="width: 450px; background: #FFF8E1; padding: 30px; border-radius: 10px; box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); text-align: center; border: 2px solid #6D4C41;">
 

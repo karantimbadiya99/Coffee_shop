@@ -21,9 +21,9 @@
         <h2>&nbsp;</h2>
         <h2>&nbsp;</h2>
         <h2>&nbsp;</h2>
-        <h2>Cart</h2>
+       
         <p>
-            <asp:DataList ID="Cart_List" runat="server" RepeatDirection="Horizontal" >
+            <%--<asp:DataList ID="Cart_List" runat="server" RepeatDirection="Horizontal"  OnItemCommand="Cart_List_ItemCommand">
                 <ItemTemplate>
                     <asp:Image ID="Image1" Height="200" Width="200" runat="server" ImageUrl='<%# Eval("image") %>' />
                     &nbsp;
@@ -38,10 +38,24 @@
                 <asp:Label ID="Label2" runat="server" Text='<%# Eval("p_dec") %>'></asp:Label>
                     <br />
                     <br />
-                    <asp:Button ID="btn_remove"  runat="server" Text="Remove Item" CommandArgument='<%# Eval("p_Id") %>' CommandName="cmd_remove_item" />
+                    <asp:Button ID="btn_remove"  runat="server" Text="Remove Item" CommandArgument='<%# Eval("p_Id") %>' CommandName="cmd_remove_item" OnClick="btn_remove_Click" />
                     <br />
                 </ItemTemplate>
-            </asp:DataList>
+            </asp:DataList>--%>
+             <div class="cart-container">
+        <h2>Cart</h2>
+      <asp:DataList ID="Cart_List" runat="server" RepeatDirection="Horizontal" CssClass="cart-list" 
+                      OnItemCommand="Cart_List_ItemCommand">
+            <ItemTemplate>
+                <div class="cart-item">
+                    <asp:Image ID="Image1" runat="server" CssClass="product-image" ImageUrl='<%# Eval("image") %>' />
+                    <p class="product-name">Name: <asp:Label runat="server" ID="lbl1" Text='<%# Eval("name") %>' /></p>
+                    <p class="product-price">Price: ₹<asp:Label ID="Label1" runat="server" Text='<%# Eval("price") %>' /></p>
+                    <asp:Button ID="btn_remove" runat="server" CssClass="remove-btn" Text="Remove Item"
+                        CommandArgument='<%# Eval("Pro_Id") %>' CommandName="cmd_remove_item" OnClick="btn_remove_Click" />
+                </div>
+            </ItemTemplate>
+        </asp:DataList>
         </p>
         <p>&nbsp;</p>
     </center>

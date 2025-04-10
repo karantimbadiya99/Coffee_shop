@@ -82,6 +82,7 @@ namespace Coffee_Shop_Project.admin
                 fldimg.SaveAs(Server.MapPath(fnm));
             }
         }
+
         void getcon()
         {
             cs = new Class1();
@@ -109,71 +110,60 @@ namespace Coffee_Shop_Project.admin
         }
 
 
-        void filltext()
-        {
-            cs = new Class1();
-            getcon();
-            ds = new DataSet();
-
-            if (ViewState["id"] != null)
-            {
-                ds = cs.select(Convert.ToInt32(ViewState["id"]));
-
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    txtProductName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
-                    txtDescription.Text = ds.Tables[0].Rows[0]["Description"].ToString();
-                    txtPrice.Text = ds.Tables[0].Rows[0]["Price"].ToString();
-                    ddlCategory.SelectedValue = ds.Tables[0].Rows[0]["CategoryID"].ToString();
-
-                    fnm = ds.Tables[0].Rows[0]["Image"].ToString().Trim();
-
-                    if (!string.IsNullOrEmpty(fnm))
-                    {
-                        imgPreview.ImageUrl = fnm;
-                    }
-                    else
-                    {
-                        imgPreview.ImageUrl = "~/Admin/Images1/default.png";
-                    }
-                }
-            }
-        }
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            //if (e.CommandName == "cmd_edt")
+            //{
+            //    filltext();
+            //    int id;
+            //    if (int.TryParse(e.CommandArgument.ToString(), out id))
+            //    {
+            //        ViewState["id"] = id;
+            //        btnAddProduct.Text = "Update";
+
+            //        decimal price;
+            //        if (!decimal.TryParse(txtPrice.Text, out price))
+            //        {
+            //            // Handle error, like showing a message
+            //            return;
+            //        }
+            //        cs.updateProduct(id, txtProductName.Text, txtDescription.Text, price, ddlCategory.SelectedIndex);
+            //    }
+            //}
+            //else
+            //{
+            //    cs = new Class1();
+            //    int id;
+            //    if (int.TryParse(e.CommandArgument.ToString(), out id))
+            //    {
+            //        ViewState["id"] = id;
+            //        cs.delete_product(id);
+            //        fillgrid();
+            //    }
+            //    else
+            //    {
+            //        // Handle error
+            //    }
+            //}
+
             if (e.CommandName == "cmd_edt")
             {
-                filltext();
                 int id;
                 if (int.TryParse(e.CommandArgument.ToString(), out id))
                 {
                     ViewState["id"] = id;
                     btnAddProduct.Text = "Update";
-
-                    decimal price;
-                    if (!decimal.TryParse(txtPrice.Text, out price))
-                    {
-                        // Handle error, like showing a message
-                        return;
-                    }
-                    cs.updateProduct(id, txtProductName.Text, txtDescription.Text, price, ddlCategory.SelectedIndex);
+                    filltext();
                 }
             }
             else
             {
                 cs = new Class1();
-                int id;
-                if (int.TryParse(e.CommandArgument.ToString(), out id))
-                {
-                    ViewState["id"] = id;
-                    cs.delete_product(id);
-                    fillgrid();
-                }
-                else
-                {
-                    // Handle error
-                }
+                int id = Convert.ToInt32(e.CommandArgument);
+                ViewState["id"] = id;
+
+                cs.delete_product(Convert.ToInt32(ViewState["id"]));
+                fillgrid();
             }
         }
         protected void btnAddProduct_Click(object sender, EventArgs e)
@@ -212,7 +202,7 @@ namespace Coffee_Shop_Project.admin
                         }
                     }
 
-                    //cs.updateProduct(productId, productName, description, price, categoryId, fnm);
+                    cs.updateProduct(productId, productName, description, price, categoryId, fnm);
                     btnAddProduct.Text = "Add Product";
                     ViewState["id"] = null;
                 }
@@ -230,6 +220,36 @@ namespace Coffee_Shop_Project.admin
             catch (Exception ex)
             {
                 // Log error
+            }
+        }
+
+        void filltext()
+        {
+            cs = new Class1();
+            getcon();
+            ds = new DataSet();
+
+            if (ViewState["id"] != null)
+            {
+                ds = cs.selectPro(Convert.ToInt32(ViewState["id"]));
+
+                
+                    txtProductName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
+                    txtDescription.Text = ds.Tables[0].Rows[0]["Description"].ToString();
+                    txtPrice.Text = ds.Tables[0].Rows[0]["Price"].ToString();
+                    ddlCategory.SelectedValue = ds.Tables[0].Rows[0]["CategoryID"].ToString();
+
+                    fnm = ds.Tables[0].Rows[0]["Image"].ToString().Trim();
+
+                    if (!string.IsNullOrEmpty(fnm))
+                    {
+                        imgPreview.ImageUrl = fnm;
+                    }
+                    else
+                    {
+                        imgPreview.ImageUrl = "~/Admin/Images1/default.png";
+                    }
+                
             }
         }
     }

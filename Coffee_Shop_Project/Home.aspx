@@ -9,7 +9,10 @@
                 <div class="carousel-item active" >
                     <img class="w-100" src="img/carousel-1.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h1><asp:Label ID="lblUser" runat="server" ></asp:Label>
+                            
                         <h2 class="text-primary font-weight-medium m-0">We Have Been Serving</h2>
+
                         <h1 class="display-1 text-white m-0">COFFEE</h1>
                         <h2 class="text-white m-0">* SINCE 1950 *</h2>
                     </div>
@@ -308,7 +311,7 @@
                                 <asp:TextBox ID="txtrequest" class="form-control bg-transparent border-primary p-4" placeholder="Special Request" runat="server" Style="height: 100px"></asp:TextBox>
                             </div>
                             <div class="form-group">
-                                <asp:Button ID="btnbooking" class="btn btn-primary w-100 py-3" runat="server" Text="Book Now"  />
+                                <asp:Button ID="btnbooking" class="btn btn-primary w-100 py-3" runat="server" Text="Book Now" OnClick="btnbooking_Click1"  />
                             </div>
                         </form>
                     </div>

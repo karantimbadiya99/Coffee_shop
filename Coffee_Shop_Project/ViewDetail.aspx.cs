@@ -14,7 +14,13 @@ namespace Coffee_Shop_Project
         SqlConnection con;
         SqlDataAdapter da;
         DataSet ds;
+        SqlCommand cmd;
         Class1 cs;
+        PagedDataSource pg;
+        int row;
+        int p, pid;
+
+        string name, dec, price, img;
         protected void Page_Load(object sender, EventArgs e)
         {
             getcon();
@@ -43,5 +49,47 @@ namespace Coffee_Shop_Project
         {
 
         }
+        protected void dlProducts_ItemCommand(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "cmd_AddToCart")
+            {
+                int User_Id = Convert.ToInt16(Session["User_ID"]);
+                int Pro_id = Convert.ToInt16(e.CommandArgument);
+                Session["Pro_id"] = Pro_id;
+                ViewState["Pro_Id"] = Pro_id;
+
+                getInfo();
+                cmd = new SqlCommand("insert into cart_tbl (User_Id,Pro_Id,name,price,image) Values ('" + User_Id + "','" + Pro_id + "','" + name + "','" + price + "','" + img + "')", con);
+                cmd.ExecuteNonQuery();
+            }
+            if (e.CommandName == "cmd_order")
+            {
+                int User_Id = Convert.ToInt16(Session["User_ID"]);
+                int Pro_id = Convert.ToInt16(e.CommandArgument);
+                Session["Pro_id"] = Pro_id;
+                ViewState["Pro_Id"] = Pro_id;
+
+                getInfo();
+
+            }
+        }
+        void getInfo()
+        {
+            getcon();
+            da = new SqlDataAdapter("select * from Products where Id='" + ViewState["Pro_Id"] + "'", cs.startcon());
+            ds = new DataSet();
+            da.Fill(ds);
+
+            name = ds.Tables[0].Rows[0][1].ToString();
+            dec = ds.Tables[0].Rows[0][2].ToString();
+            price = ds.Tables[0].Rows[0][3].ToString();
+            img = ds.Tables[0].Rows[0][5].ToString();
+        }
+
+        protected void lnkAddToCart_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Add_To_Cart.aspx");
+        }
+        
     }
 }

@@ -211,7 +211,8 @@ namespace Coffee_Shop_Project
                 ViewState["Pro_Id"] = Pro_id;
 
                 getInfo();
-                cmd = new SqlCommand("insert into cart_tbl(p_Id,u_Id,p_name,p_dec,p_price,image) VALUES ('" + Pro_id + "','" + User_Id + "','" + name + "','" + dec + "','" + price + "','" + img + "') ", cs.startcon());
+                //cmd = new SqlCommand("insert into cart_tbl(p_Id,u_Id,p_name,p_dec,p_price,image) VALUES ('" + Pro_id + "','" + User_Id + "','" + name + "','" + dec + "','" + price + "','" + img + "') ", cs.startcon());
+                cmd = new SqlCommand("insert into cart_tbl (User_Id,Pro_Id,name,price,image) Values ('" + User_Id + "','" + Pro_id + "','" + name + "','" + price + "','" + img + "')", con);
                 cmd.ExecuteNonQuery();
             }
         }
