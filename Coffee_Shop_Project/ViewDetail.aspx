@@ -41,7 +41,7 @@
                             <asp:Label ID="Label2" runat="server" Text='<%# Eval("Price") %>' CssClass="text-dark"></asp:Label>
                         </p>
                         <p class="card-text fw-bold">
-                            <asp:LinkButton ID="lnkAddToCart" runat="server"  CssClass="btn btn-primary"  CommandArgument='<%# Eval("Id") %>'   OnCommand="dlProducts_ItemCommand" Style="background: #d2691e; color: white; padding: 5px 10px; border-radius: 5px; border: none;" CommandName="cmd_AddToCart" OnClick="lnkAddToCart_Click">Add to cart</asp:LinkButton>
+                            <asp:LinkButton ID="lnkAddToCart" runat="server"  CssClass="btn btn-primary"  CommandArgument='<%# Eval("Id") %>'   OnCommand="dlProducts_ItemCommand" Style="background: #d2691e; color: white; padding: 5px 10px; border-radius: 5px; border: none;" CommandName="cmd_AddToCart" >Add to cart</asp:LinkButton>
                              
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:LinkButton ID="lnkorder" runat="server" CssClass="btn btn-primary"  CommandArgument='<%# Eval("Id") %>'   OnCommand="dlProducts_ItemCommand" Style="background: #d2691e; color: white; padding: 5px 10px; border-radius: 5px; border: none;" CommandName="cmd_order">Order</asp:LinkButton>

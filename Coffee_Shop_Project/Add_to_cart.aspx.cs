@@ -40,9 +40,9 @@ namespace Coffee_Shop_Project
             if (e.CommandName == "cmd_remove_item")
             {
                 Pro_id = Convert.ToInt32(e.CommandArgument);
-                User_Id = Convert.ToInt32(Session["User ID"]);
+                User_Id = Convert.ToInt32(Session["User_ID"]);
                 connection();
-                cmd = new SqlCommand("delete from cart_tbl where User Id = '" + User_Id + "' && Pro_Id = '" + Pro_id + "'  ", con);
+                cmd = new SqlCommand("delete from cart_tbl where Pro_Id = '" + Pro_id + "'  ", cs.startcon());
                 cmd.ExecuteNonQuery();
                 display();
             }
@@ -53,8 +53,8 @@ namespace Coffee_Shop_Project
         {
             connection();
             Pro_id = Convert.ToInt32(Session["Pro_id"]);
-            User_Id = Convert.ToInt32(Session["User ID"]);
-            cmd = new SqlCommand("delete from cart_tbl where User Id = '" + User_Id + "' AND Pro_Id = '" + Pro_id + "'  ", con);
+            User_Id = Convert.ToInt32(Session["User_ID"]);
+            cmd = new SqlCommand("delete from cart_tbl where Pro_Id = '" + Pro_id + "'  ", con);
             cmd.ExecuteNonQuery();
             display();
         }
@@ -66,7 +66,7 @@ namespace Coffee_Shop_Project
         void display()
         {
             connection();
-            da = new SqlDataAdapter("select * from cart_tbl where User_Id='" + Session["User ID"] + "'", con);
+            da = new SqlDataAdapter("select * from cart_tbl where User_Id='" + Session["User_ID"] + "'", con);
             ds = new DataSet();
             da.Fill(ds);
             Cart_List.DataSource = ds;

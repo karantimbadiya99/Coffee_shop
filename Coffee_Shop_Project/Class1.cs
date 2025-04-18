@@ -94,6 +94,18 @@ namespace Coffee_Shop_Project
             cmd = new SqlCommand("Delete from reg_tbl where Id='" + id + "'", con);
             cmd.ExecuteNonQuery();
         }
+        //public void delete_order(int id)
+        //{
+        //    startcon();
+        //    cmd = new SqlCommand("Delete from Order_tbl where O_Id='" + id + "'", con);
+        //    cmd.ExecuteNonQuery();
+        //}
+
+
+
+
+
+
 
         //public void booking_delete(int id)
         //{

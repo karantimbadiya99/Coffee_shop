@@ -33,7 +33,7 @@ namespace Coffee_Shop_Project
 
         }
 
-       
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
 
@@ -54,22 +54,22 @@ namespace Coffee_Shop_Project
         }
 
 
-        
+
 
         protected void signin_Click(object sender, EventArgs e)
         {
-            
+
 
             getcon();
-            cmd = new SqlCommand("SELECT ID, Role FROM SignUp_tbl WHERE Email='"+ txteml.Text + "' AND Password='"+ txtpass.Text + "'", cs.startcon());
-            
+            cmd = new SqlCommand("SELECT ID, Role FROM SignUp_tbl WHERE Email='" + txteml.Text + "' AND Password='" + txtpass.Text + "'", cs.startcon());
+
 
             SqlDataReader reader = cmd.ExecuteReader();
 
             if (reader.Read())
             {
                 // Store user session
-                Session["User ID"] = reader["ID"].ToString(); // Store user ID
+                Session["User_ID"] = reader["ID"].ToString(); // Store user ID
                 Session["User Role"] = reader["Role"].ToString();
                 Session["User Email"] = txteml.Text;
 
@@ -102,6 +102,7 @@ namespace Coffee_Shop_Project
                 }
                 else
                 {
+                    //U_id();
                     Response.Redirect("Home.aspx"); // Redirect to user panel
                 }
             }
@@ -110,21 +111,20 @@ namespace Coffee_Shop_Project
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Invalid Email or Password!');", true);
             }
 
-            
+
         }
         //for the registration
-        //void id()
-        //{
-        //    getcon();
-        //    da = new SqlDataAdapter("select * from reg_tbl Where Email='" + txteml.Text + "' AND Password='" + txtpass.Text + "'", cs.startcon());
+        void U_id()
+        {
+            getcon();
+            da = new SqlDataAdapter("select * from reg_tbl Where Email='" + txteml.Text + "' AND Password='" + txtpass.Text + "'", cs.startcon());
 
+            ds = new DataSet();
+            da.Fill(ds);
 
-        //    ds = new DataSet();
-        //    da.Fill(ds);
-
-        //    int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-        //    Session["User_ID"] = id;
-        //}
+            int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+            Session["User_ID"] = id;
+        }
 
         protected void btnsignup_Click(object sender, EventArgs e)
         {
