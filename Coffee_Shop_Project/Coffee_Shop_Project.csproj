@@ -182,7 +182,7 @@
     <Content Include="mail\contact.php" />
     <Content Include="mail\jqBootstrapValidation.min.js" />
     <Content Include="Menu.aspx" />
-    <Content Include="Orders.aspx" />
+    <Content Include="Order.aspx" />
     <Content Include="Reg.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="Reservation.aspx" />
@@ -310,12 +310,12 @@
       <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\User .cs" />
-    <Compile Include="Orders.aspx.cs">
-      <DependentUpon>Orders.aspx</DependentUpon>
+    <Compile Include="Order.aspx.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Orders.aspx.designer.cs">
-      <DependentUpon>Orders.aspx</DependentUpon>
+    <Compile Include="Order.aspx.designer.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reg.aspx.cs">

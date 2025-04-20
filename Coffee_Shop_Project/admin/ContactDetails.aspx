@@ -9,6 +9,9 @@
     <br />
     <br />
     <br />
+    <br />
+    <br />
+    <br />
     <center>
         <div class="container mt-4">
     <h3 class="text-center mb-4">Manage Contact Details</h3>

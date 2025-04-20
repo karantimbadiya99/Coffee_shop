@@ -82,7 +82,7 @@
                                     <a href="Reservation.aspx" class="dropdown-item">Reservation</a>
                                     <a href="Testimonial.aspx" class="dropdown-item">Testimonial</a>
                                     <a href="Add_to_cart.aspx" class="dropdown-item">Add To Cart</a>
-                                    <a href="Orders.aspx" class="dropdown-item">Orders</a>
+                                    <a href="Order.aspx" class="dropdown-item">Orders</a>
 
                                 </div>
                             </div>

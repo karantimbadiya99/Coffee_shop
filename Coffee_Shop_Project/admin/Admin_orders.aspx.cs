@@ -24,8 +24,8 @@ namespace Coffee_Shop_Project.admin
         {
             con = new SqlConnection(s);
             con.Open();
-
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Display();
@@ -34,13 +34,17 @@ namespace Coffee_Shop_Project.admin
         void Display()
         {
             startcon();
-            cmd = new SqlCommand("SELECT * FROM Order_tbl Where U_Id = '" + Session["User_ID"] + "'", con);
+            cmd = new SqlCommand("SELECT * FROM Order_tbl", con);
             da = new SqlDataAdapter(cmd);
             ds = new DataSet();
             da.Fill(ds);
 
             GridView1.DataSource = ds;
             GridView1.DataBind();
+        }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
         }
     }
 }
