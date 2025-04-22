@@ -41,33 +41,17 @@ namespace Coffee_Shop_Project
             GridView1.DataSource = ds;
             GridView1.DataBind();
         }
-         //void getcon()
-        //{
-        //    cs = new Class1();
-        //    cs.startcon();
-        //}
+
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            
+            startcon();
+            if (e.CommandName == "cmd_cancle")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+                cmd = new SqlCommand("DELETE FROM Order_tbl WHERE O_Id ='" + id + "' ", con);
+                cmd.ExecuteNonQuery();
+                Display();
+            }
         }
-        //void delete_Order(int id)
-        //{
-        //    getcon();
-        //    cmd = new SqlCommand("DELETE FROM Order_tbl WHERE O_Id ='" + id + "' ", cs.startcon());
-        //    cmd.ExecuteNonQuery();
-        //}
-        //void fillgrid()
-        //{
-        //    startcon();
-        //    cmd = new SqlCommand("SELECT Id, Name FROM Order_tbl", con);
-        //    da = new SqlDataAdapter(cmd);
-        //    ds = new DataSet();
-        //    da.Fill(ds);
-
-        //    GridView1.DataSource = ds;
-        //    GridView1.DataBind();
-
-        //    con.Close();
-        //}
     }
 }

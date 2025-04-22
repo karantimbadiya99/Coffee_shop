@@ -37,12 +37,12 @@ namespace Coffee_Shop_Project
         }
         protected void Cart_List_ItemCommand(object source, DataListCommandEventArgs e)
         {
+            connection();
             if (e.CommandName == "cmd_remove_item")
             {
                 Pro_id = Convert.ToInt32(e.CommandArgument);
                 User_Id = Convert.ToInt32(Session["User_ID"]);
-                connection();
-                cmd = new SqlCommand("delete from cart_tbl where Pro_Id = '" + Pro_id + "'  ", cs.startcon());
+                cmd = new SqlCommand("delete from cart_tbl where Pro_Id = '" + Pro_id + "'  ", con);
                 cmd.ExecuteNonQuery();
                 display();
             }

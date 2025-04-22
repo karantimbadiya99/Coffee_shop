@@ -56,11 +56,11 @@ namespace Coffee_Shop_Project
         //    cmd.ExecuteNonQuery();
         //    con.Close();
         //}
-         public void updateProduct(int id, string name, string des, decimal price, int catid, string img)
+         public void updateProduct(int id, string name, string des, decimal price, int catid)
         {
             startcon();
 
-            cmd = new SqlCommand("UPDATE Products SET Name = '" + name + ", Description = '" + des + ", Price = '" + price + ", CategoryId = '" + catid + ", Image = '" + img + " WHERE Id = '" + id + "", con);
+            cmd = new SqlCommand("UPDATE Products SET Name = '" + name + ", Description = '" + des + ", Price = '" + price + ", CategoryId = '" + catid + "' WHERE Id = '" + id + "", con);
             cmd.ExecuteNonQuery();
             con.Close();
         }

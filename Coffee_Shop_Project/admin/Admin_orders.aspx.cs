@@ -45,6 +45,14 @@ namespace Coffee_Shop_Project.admin
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
+            startcon();
+            if (e.CommandName == "cmd_cancle")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+                cmd = new SqlCommand("DELETE FROM Order_tbl WHERE O_Id ='" + id + "' ", con);
+                cmd.ExecuteNonQuery();
+                Display();
+            }
         }
     }
 }

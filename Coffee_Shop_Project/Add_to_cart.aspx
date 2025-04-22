@@ -54,8 +54,9 @@
                                 <asp:Label runat="server" ID="lbl1" Text='<%# Eval("name") %>' />
                             </p>
                             <p class="product-price">Price: ₹<asp:Label ID="Label1" runat="server" Text='<%# Eval("price") %>' /></p>
-                            <asp:Button ID="btn_remove" runat="server" CssClass="remove-btn" Text="Remove Item"
-                                CommandArgument='<%# Eval("Pro_Id") %>' CommandName="cmd_remove_item" OnClick="btn_remove_Click" />
+                            <%--<asp:Button ID="btn_remove" runat="server" CssClass="remove-btn" Text="Remove Item"
+                                CommandArgument='<%# Eval("Pro_Id") %>' CommandName="cmd_remove_item" OnClick="btn_remove_Click" />--%>
+                            <asp:LinkButton ID="btn_remove" CssClass="remove-btn" Text="Remove Item" CommandArgument='<%# Eval("Pro_Id") %>' CommandName="cmd_remove_item" runat="server" />
                         </div>
                     </ItemTemplate>
                 </asp:DataList>

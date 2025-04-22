@@ -202,7 +202,7 @@ namespace Coffee_Shop_Project.admin
                         }
                     }
 
-                    cs.updateProduct(productId, productName, description, price, categoryId, fnm);
+                    cs.updateProduct(productId, productName, description, price, categoryId);
                     btnAddProduct.Text = "Add Product";
                     ViewState["id"] = null;
                 }
