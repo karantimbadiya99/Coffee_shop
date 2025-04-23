@@ -102,7 +102,7 @@ namespace Coffee_Shop_Project.admin
         bool IsDuplicate(string productName, int categoryId)
         {
             getcon();
-           
+
             cmd = new SqlCommand("SELECT COUNT(*) FROM Products WHERE Name = '" + productName + "' AND CategoryID = '" + categoryId + "'", con);
             int count = Convert.ToInt32(cmd.ExecuteScalar());
             con.Close();
@@ -169,8 +169,7 @@ namespace Coffee_Shop_Project.admin
         protected void btnAddProduct_Click(object sender, EventArgs e)
         {
             getcon();
-            try
-            {
+           
                 if (ddlCategory.SelectedValue == "0")
                 {
                     return;
@@ -181,7 +180,7 @@ namespace Coffee_Shop_Project.admin
                     return;
                 }
 
-                // Upload Image
+                //Upload Image
                 imgupload();
 
                 string productName = txtProductName.Text.Trim();
@@ -189,40 +188,49 @@ namespace Coffee_Shop_Project.admin
                 decimal price = Convert.ToDecimal(txtPrice.Text);
                 int categoryId = Convert.ToInt32(ddlCategory.SelectedValue);
 
-                if (btnAddProduct.Text == "Update" && ViewState["id"] != null)
+                //if (btnAddProduct.Text == "Update")
+                //{
+                //    int productId = Convert.ToInt32(ViewState["id"]);
+
+                //    //if (string.IsNullOrEmpty(fnm))
+                //    //{
+                //    //    DataSet ds = cs.select(productId);
+                //    //    if (ds.Tables[0].Rows.Count > 0)
+                //    //    {
+                //    //        fnm = ds.Tables[0].Rows[0]["Image"].ToString();
+                //    //    }
+                //    //}
+
+                //    cs.updateProduct(productId, productName, description, price, categoryId);
+                //    btnAddProduct.Text = "Add Product";
+                //    ViewState["id"] = null;
+                //    fillgrid();
+                //}
+                //else
+                //{
+                //    if (!IsDuplicate(productName, categoryId))
+                //    {
+                //        cs.insertProduct(productName, description, price, fnm, categoryId);
+                //        fillgrid();
+                //    }
+                //}
+
+
+                if (btnAddProduct.Text == "Add Product")
                 {
-                    int productId = Convert.ToInt32(ViewState["id"]);
-
-                    if (string.IsNullOrEmpty(fnm))
-                    {
-                        DataSet ds = cs.select(productId);
-                        if (ds.Tables[0].Rows.Count > 0)
-                        {
-                            fnm = ds.Tables[0].Rows[0]["Image"].ToString();
-                        }
-                    }
-
-                    cs.updateProduct(productId, productName, description, price, categoryId);
-                    btnAddProduct.Text = "Add Product";
-                    ViewState["id"] = null;
+                       cs.insertProduct(productName, description, price, fnm, categoryId);
                 }
                 else
                 {
-                    if (!IsDuplicate(productName, categoryId))
-                    {
-                        cs.insertProduct(productName, description, price, fnm, categoryId);
-                    }
+                    cs.updateProduct(Convert.ToInt32(ViewState["id"]), productName, description, price, categoryId);
+                    //cs.UpdateProduct(Convert.ToInt16(ViewState["id"]), txt_Pname.Text, txt_price.Text, ddl_category.SelectedValue.ToString(), txt_dec.Text, txt_stock.Text);
                 }
-
                 fillgrid();
-                clear();
-            }
-            catch (Exception ex)
-            {
-                // Log error
-            }
-        }
 
+                clear();
+            
+           
+        }
         void filltext()
         {
             cs = new Class1();
@@ -233,23 +241,12 @@ namespace Coffee_Shop_Project.admin
             {
                 ds = cs.selectPro(Convert.ToInt32(ViewState["id"]));
 
-                
-                    txtProductName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
-                    txtDescription.Text = ds.Tables[0].Rows[0]["Description"].ToString();
-                    txtPrice.Text = ds.Tables[0].Rows[0]["Price"].ToString();
-                    ddlCategory.SelectedValue = ds.Tables[0].Rows[0]["CategoryID"].ToString();
 
-                    fnm = ds.Tables[0].Rows[0]["Image"].ToString().Trim();
+                txtProductName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
+                txtDescription.Text = ds.Tables[0].Rows[0]["Description"].ToString();
+                txtPrice.Text = ds.Tables[0].Rows[0]["Price"].ToString();
+                ddlCategory.SelectedValue = ds.Tables[0].Rows[0]["CategoryID"].ToString();
 
-                    if (!string.IsNullOrEmpty(fnm))
-                    {
-                        imgPreview.ImageUrl = fnm;
-                    }
-                    else
-                    {
-                        imgPreview.ImageUrl = "~/Admin/Images1/default.png";
-                    }
-                
             }
         }
     }

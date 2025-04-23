@@ -60,9 +60,18 @@ namespace Coffee_Shop_Project
         {
             startcon();
 
-            cmd = new SqlCommand("UPDATE Products SET Name = '" + name + ", Description = '" + des + ", Price = '" + price + ", CategoryId = '" + catid + "' WHERE Id = '" + id + "", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            using (SqlCommand cmd = new SqlCommand("UPDATE Products SET Name = @Name, Description = @Description, Price = @Price, CategoryId = @CategoryId WHERE Id = @Id", con))
+            {
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@Description", des);
+                cmd.Parameters.AddWithValue("@Price", price);
+                cmd.Parameters.AddWithValue("@CategoryId", catid);
+                cmd.ExecuteNonQuery();
+            }
+            //cmd = new SqlCommand("UPDATE Products SET Name = '" + name + ", Description = '" + des + ", Price = '" + price + ", CategoryId = '" + catid + "' WHERE Id = '" + id + "", con);
+            //cmd.ExecuteNonQuery();
+            //con.Close();
         }
         public void delete_product(int id)
         {
@@ -94,25 +103,7 @@ namespace Coffee_Shop_Project
             cmd = new SqlCommand("Delete from reg_tbl where Id='" + id + "'", con);
             cmd.ExecuteNonQuery();
         }
-        //public void delete_order(int id)
-        //{
-        //    startcon();
-        //    cmd = new SqlCommand("Delete from Order_tbl where O_Id='" + id + "'", con);
-        //    cmd.ExecuteNonQuery();
-        //}
-
-
-
-
-
-
-
-        //public void booking_delete(int id)
-        //{
-        //    startcon();
-        //    cmd = new SqlCommand("Delete from booking_tbl where Id='" + id + "'", con);
-        //    cmd.ExecuteNonQuery();
-        //}
+     
 
 
         public DataSet filldata()

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/Site2.Master" AutoEventWireup="true" CodeBehind="Add_Product.aspx.cs" Inherits="Coffee_Shop_Project.admin.Add_Product" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/Site2.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Add_Product.aspx.cs" Inherits="Coffee_Shop_Project.admin.Add_Product" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
